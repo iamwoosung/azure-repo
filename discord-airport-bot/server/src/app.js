@@ -1,21 +1,16 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-// const authRoutes = require('./routes/auth');
-require('dotenv').config(({ path: 'pkg.env.devz' }));
+require('dotenv').config(({ path: 'pkg.env.dev' }));
 
-const app = express();
-const PORT = process.env.PORT || 3001;
+const svr = require('./server');
+const api = require('./apiClient');
 
-app.use(cors());
-app.use(bodyParser.json());
-// app.use('/api/auth', authRoutes);
 
-// 새로운 라우트 추가
-app.get('/api/test', (req, res) => {
-    res.json({ message: 'hello world!' });
-});
 
-app.listen(PORT, () => {
-    console.log(`listen server ${PORT} port.`);
-});
+setInterval(function() {
+    try { 
+        api.doCallAPIKORAirportParkingTraffic();
+        api.doCallAPIICNAirportParkingTraffic();
+        api.doCallAPIKORAirportInsideTraffic();
+    } catch (err) {
+        log.error('메인 스레드 예외 발생');
+    }
+}, 10000);
