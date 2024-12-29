@@ -7,9 +7,9 @@ const api = require('./apiClient');
 
 setInterval(function() {
     try { 
-        api.doCallAPIKORAirportParkingTraffic();
-        api.doCallAPIICNAirportParkingTraffic();
-        api.doCallAPIKORAirportInsideTraffic();
+        // api.doCallAPIKORAirportParkingTraffic();
+        // api.doCallAPIICNAirportParkingTraffic();
+        // api.doCallAPIKORAirportInsideTraffic();
     } catch (err) {
         log.error('메인 스레드 예외 발생');
     }
