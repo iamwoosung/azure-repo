@@ -3,6 +3,7 @@ from discord.ext import commands
 
 from bot import AirportCommand
 
+'''
 from quickchart import QuickChart
 
 qc = QuickChart()
@@ -18,15 +19,16 @@ qc.config = {
             "data": [1, 2]
         }]
     }
-} 
+}
+'''
 
 
-TOKEN = 
-CHANNEL_ID = 
+TOKEN = ""
+CHANNEL_ID = ""
 
 intents = discord.Intents.default()
 intents.message_content = True
-bot = commands.Bot(command_prefix = '!', help_command = None, intents=intents)
+bot = commands.Bot(command_prefix = '!', help_command = commands.DefaultHelpCommand(), intents=intents)
 
 @bot.event
 async def on_ready():
@@ -41,7 +43,7 @@ bot.run(TOKEN)
 
 
 # Print a chart URL
-print(qc.get_url())
+#print(qc.get_url())
 
 # Print a short chart URL
-print(qc.get_short_url())
+#print(qc.get_short_url())
